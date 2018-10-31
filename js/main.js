@@ -31,12 +31,14 @@ function inicializaContadores(){
 function inicializaCronometro(){
 	var tempoRestante = $("#tempo-digitacao").text();
 	campo.one("focus", function(){ //evento focus detecta se o marcador de texto ta dentro do input / funcao one só funciona a funcao como uma unica vez	
+		$("#botao-reiniciar").attr("disabled", true);
 		var cronometroID = setInterval(function(){ //que faz com que uma determinada ação seja executada em um intervalo de tempo
 			tempoRestante--;
 			$("#tempo-digitacao").text(tempoRestante);
 				if(tempoRestante < 1){
 					campo.attr("disabled",true);// funcao attr altera os atributos de elemento
 					clearInterval(cronometroID); //limpa o cronometro
+					$("#botao-reiniciar").attr("disabled", false);
 				}
 		},1000);
 	});	
