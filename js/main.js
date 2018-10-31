@@ -13,6 +13,14 @@ campo.on("input", function(){ //input serve pra quando tiver digitando dados no 
 	var qtdCaracteres = conteudo.length;
 	$("#contador-caracteres").text(qtdCaracteres);
 });
-campo.on("focus", function(){
-	console.log("Estou digitando")
+var tempoRestante = $("#tempo-digitacao").text();
+campo.one("focus", function(){ //evento focus detecta se o marcador de texto ta dentro do input / funcao one só funciona a funcao como uma unica vez	
+var cronometroID = setInterval(function(){ //que faz com que uma determinada ação seja executada em um intervalo de tempo
+		tempoRestante--;
+		$("#tempo-digitacao").text(tempoRestante);
+		if(tempoRestante < 1){
+			campo.attr("disabled",true);// funcao attr pega o valor de um atributo ou modifica ele, semelhante a text
+			clearInterval(cronometroID); //limpa o cronometro
+		}
+	},1000);
 });
