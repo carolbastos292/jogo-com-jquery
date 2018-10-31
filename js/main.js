@@ -39,6 +39,7 @@ function inicializaCronometro(){
 					campo.attr("disabled",true);// funcao attr altera os atributos de elemento
 					clearInterval(cronometroID); //limpa o cronometro
 					$("#botao-reiniciar").attr("disabled", false);
+					 campo.toggleClass("campo-desativado");
 				}
 		},1000);
 	});	
@@ -52,5 +53,6 @@ function reiniciaJogo(){
     $("#contador-caracteres").text("0");
     $("#tempo-digitacao").text(tempoInicial);
     inicializaCronometro();
+    campo.toggleClass("campo-desativado");
 };
 
